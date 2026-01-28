@@ -1,0 +1,27 @@
+== 73. Arrays to Hash
+
+`arrays_to_hash` tar två arrayer som input och returnerar en hash där elementen från den första arrayen blir nycklar och elementen från den andra arrayen blir värden.
+
+Arrayerna har alltid samma längd, och elementet på index `i` i första arrayen paras ihop med elementet på index `i` i den andra arrayen.
+
+[source, ruby]
+.Exempelanrop
+----
+keys = ["name", "age"]
+values = ["Alice", 25]
+arrays_to_hash(keys, values) #=> {"name" => "Alice", "age" => 25}
+
+arrays_to_hash(["a", "b", "c"], [1, 2, 3]) #=> {"a" => 1, "b" => 2, "c" => 3}
+
+arrays_to_hash([], []) #=> {}
+
+colors = ["red", "green", "blue"]
+codes = ["#FF0000", "#00FF00", "#0000FF"]
+arrays_to_hash(colors, codes) #=> {"red" => "#FF0000", "green" => "#00FF00", "blue" => "#0000FF"}
+----
+
+* Skapa ett flödesschema med penna och papper.
+* Testkör flödesschemat med olika värden för att säkerställa att det fungerar.
+* Implementera funktionen `arrays_to_hash` i `arrays_to_hash.rb`.
+* Testa din lösning manuellt genom att anropa funktionen med olika argument.
+* Kör de automatiska testerna med `rake` i uppgiftens rotmapp i terminalen.

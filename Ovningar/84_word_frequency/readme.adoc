@@ -1,0 +1,25 @@
+== 84. Word Frequency
+
+`word_frequency` tar en sträng som representerar en sökväg till en textfil som input och returnerar en hash där nycklarna är ord och värdena är antalet gånger varje ord förekommer i filen.
+
+Ord separeras av mellanslag och radbrytningar. Alla ord ska konverteras till gemener (lowercase) så att "Hej" och "hej" räknas som samma ord.
+
+[NOTE]
+====
+Denna uppgift kombinerar kunskaper från filsystemet med hashes. Se link:../code_and_syntax/#filsystemet[filsystemet] och link:../code_and_syntax/#hashes[hashes] för vilka metoder som kan vara användbara.
+====
+
+[IMPORTANT]
+====
+För att testerna ska fungera finns det en mapp som heter `files` i uppgiftens testmapp. Denna mapp innehåller filer som testerna kommer att använda. Ta inte bort eller ändra i den.
+====
+
+[source, ruby]
+.Exempelanrop
+----
+word_frequency("c:/users/daniel.berg/documents/text.txt")
+#=> {"hej" => 3, "på" => 2, "dig" => 1, "världen" => 1}
+
+word_frequency("c:/users/daniel.berg/documents/tom.txt")
+#=> {}
+----

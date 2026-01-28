@@ -1,0 +1,26 @@
+== 68. Has Key
+
+`has_key` tar en `Hash` och en nyckel som input och returnerar `true` om nyckeln finns i hashen. Annars returnerar funktionen `false`.
+
+[source, ruby]
+.Exempelanrop
+----
+ages = {"Alice" => 25, "Bob" => 30}
+has_key(ages, "Alice") #=> true
+has_key(ages, "Charlie") #=> false
+
+empty_hash = {}
+has_key(empty_hash, "test") #=> false
+
+prices = {"milk" => 15, "bread" => 25}
+has_key(prices, "milk") #=> true
+----
+
+[IMPORTANT]
+====
+För att lösa den här uppgiften behöver du kunna link:../code_and_syntax#finns-nyckel[kontrollera om en nyckel finns] i en hash.
+====
+
+* Implementera funktionen `has_key` i `has_key.rb`.
+* Testa din lösning manuellt genom att anropa funktionen med olika argument.
+* Kör de automatiska testerna med `rake` i uppgiftens rotmapp i terminalen.

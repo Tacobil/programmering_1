@@ -1,0 +1,28 @@
+== 69. Add Entry
+
+`add_entry` tar en `Hash`, en nyckel och ett värde som input. Funktionen lägger till nyckel-värde-paret i hashen och returnerar den modifierade hashen.
+
+[source, ruby]
+.Exempelanrop
+----
+phone_book = {"Alice" => "070-123"}
+add_entry(phone_book, "Bob", "070-456")
+#=> {"Alice" => "070-123", "Bob" => "070-456"}
+
+prices = {"milk" => 15}
+add_entry(prices, "bread", 25)
+#=> {"milk" => 15, "bread" => 25}
+
+empty_hash = {}
+add_entry(empty_hash, "fruit", "apple")
+#=> {"fruit" => "apple"}
+----
+
+[IMPORTANT]
+====
+För att lösa den här uppgiften behöver du kunna link:../code_and_syntax#lägga-till[lägga till ett nyckel-värde-par] i en hash.
+====
+
+* Implementera funktionen `add_entry` i `add_entry.rb`.
+* Testa din lösning manuellt genom att anropa funktionen med olika argument.
+* Kör de automatiska testerna med `rake` i uppgiftens rotmapp i terminalen.

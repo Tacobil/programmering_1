@@ -1,0 +1,26 @@
+== 82. Average Temperature
+
+`average_temperature` tar en en sträng som representerar en sökväg till en mapp med mätfiler som input.
+
+En mätfil är en textfil med filändelsen `.temps` som innehåller en temperatur per rad. Temperaturen är ett flyttal som representerar temperaturen i Celsius.
+
+Funktionen ska returnera den sammanlagda medeltemperaturen av alla mätningar i alla mätfiler i mappen.
+
+[NOTE]
+====
+Se link:../code_and_syntax/#filsystemet[filsystemet] för vilka metoder som kan vara användbara.
+====
+
+[IMPORTANT]
+====
+Värderdatan finns i mappen `readings` i uppgiftens rotmapp.
+Denna mapp innehåller filer som testerna kommer att använda. Ta inte bort eller ändra i den.
+====
+
+[source, ruby]
+.Exempelanrop
+----
+average_temperature("readings/april") #=> 6.554333333333333
+average_temperature("nope/nuh-uh") #=> "Mappen finns inte."
+average_temperature("readings/may") #=> "Inga mätfiler hittades."
+----

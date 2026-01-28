@@ -1,0 +1,27 @@
+== 67. Lookup
+
+`lookup` tar en `Hash` och en nyckel som input och returnerar värdet för den nyckeln. Om nyckeln inte finns i hashen returneras `nil`.
+
+[source, ruby]
+.Exempelanrop
+----
+ages = {"Alice" => 25, "Bob" => 30}
+lookup(ages, "Alice") #=> 25
+lookup(ages, "Bob") #=> 30
+lookup(ages, "Charlie") #=> nil
+
+empty_hash = {}
+lookup(empty_hash, "Alice") #=> nil
+
+numbers = {"a" => 1, "b" => 2, "c" => 3}
+lookup(numbers, "b") #=> 2
+----
+
+[IMPORTANT]
+====
+För att lösa den här uppgiften behöver du kunna link:../code_and_syntax#åtkomst[slå upp ett värde i en hash] med hjälp av en nyckel.
+====
+
+* Implementera funktionen `lookup` i `lookup.rb`.
+* Testa din lösning manuellt genom att anropa funktionen med olika argument.
+* Kör de automatiska testerna med `rake` i uppgiftens rotmapp i terminalen.

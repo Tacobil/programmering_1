@@ -1,0 +1,32 @@
+== 78. Invert Hash
+
+`invert_hash` tar en hash som input och returnerar en ny hash där nycklarna och värdena har bytts plats.
+
+[source, ruby]
+.Exempelanrop
+----
+translations = {"apple" => "äpple", "banana" => "banan", "orange" => "apelsin"}
+invert_hash(translations) #=> {"äpple" => "apple", "banan" => "banana", "apelsin" => "orange"}
+
+ages = {"Alice" => 25, "Bob" => 30}
+invert_hash(ages) #=> {25 => "Alice", 30 => "Bob"}
+
+empty_hash = {}
+invert_hash(empty_hash) #=> {}
+----
+
+[WARNING]
+====
+Skriv funktionen utan att använda metoden `.invert`.
+====
+
+[IMPORTANT]
+====
+För att lösa den här uppgiften behöver du kunna link:../code_and_syntax#skapa[skapa en hash], link:../code_and_syntax#lägga-till[lägga till nyckel-värde-par], link:../code_and_syntax#åtkomst[slå upp värden], link:../goals_and_plans#inkrementerande-räknande-loop[inkrementerande räknande loop] och använda `.keys` för att hämta nycklar.
+====
+
+* Skapa ett flödesschema med penna och papper.
+* Testkör flödesschemat med olika värden för att säkerställa att det fungerar.
+* Implementera funktionen `invert_hash` i `invert_hash.rb`.
+* Testa din lösning manuellt genom att anropa funktionen med olika argument.
+* Kör de automatiska testerna med `rake` i uppgiftens rotmapp i terminalen.

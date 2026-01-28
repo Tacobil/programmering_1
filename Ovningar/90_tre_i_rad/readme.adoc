@@ -1,0 +1,80 @@
+== 90. Tre i rad
+
+Den här uppgiften går ut på att skriva *två* funktioner för att leta reda på *alla* lediga platser i för en omgång i spelet "Tre i rad".
+
+1. `parse` ska ta en sträng som representerar sökvägen till en tre-i-rad-spelplan som argument och returnera en tvådimensionell array som representerar spelplanen.
++
+[source, plaintext]
+.Exempelspelplan
+----
+o o -
+- x -
+- - x
+----
++
+Spelplanen är en 3x3 array där varje cell kan antingen vara tom (`'-'`) eller innehålla en spelares markör (`'x'` eller `'o'`).
+
+2. `valid_moves` ska ta 1 argument: en tvådimensionell array som representerar spelplanen.
+
+Funktionen ska returnera en array av hashes med kordinater till alla lediga platser på spelplanen. En ledig plats är en cell som innehåller `'-'`.
+
+[IMPORTANT]
+====
+Koordinatsystemet ska utgå från att 0, 0 är längs ner till vänster på spelplanen.
+
+Skapa båda funktionerna i `lib/tre_i_rad.rb`.
+====
+
+[source, plaintext]
+.Exempelspelplan
+----
+o o -
+- x -
+- - x
+----
+
+[source, plaintext]
+.Spelplan med X/Y-koordinater
+----
+0,2 1,2 2,2
+0,1 1,1 2,1
+0,0 1,0 2,0
+----
+
+[IMPORTANT]
+====
+Se link:../code_and_syntax/#tvådimensionella-arrayer[tvådimensionella arrayer] för hur tvådimensionella arrayer fungerar.
+====
+
+[IMPORTANT]
+====
+Skapa både `parse` och `valid_moves` i filen `lib/find.rb`.
+
+Exempelspelplaner finns i mappen `boards` i uppgiftens rotmapp.
+Denna mapp innehåller filer som testerna kommer att använda. Ta inte bort eller ändra i den.
+====
+
+[source, ruby]
+.Exempelanrop
+----
+board = parse("boards/1.board") #=> [["x", "o", "x"], ["o", "x", "o"], ["o", "x", "x"]]
+valid_moves(board) = []
+board = parse("boards/2.board") #=> [
+#  ["o, "o", "x"],
+#  ["x", "x", "o"],
+#  ["o", "-", "x"]
+# ]
+valid_moves(board) #=> [ { "x" => 1, "y" => 0} ] <1>
+board = parse("boards/3.board") #=> ["-", "-", "-"], ["-", "x", "-"], ["-", "-", "-"]
+valid_moves(board) #=> [
+#  {"x" => 0, "y" => 0},
+#  {"x" => 1, "y" => 0},
+#  {"x" => 2, "y" => 0},
+#  {"x" => 0, "y" => 1},
+#  {"x" => 2, "y" => 1},
+#  {"x" => 0, "y" => 2},
+#  {"x" => 1, "y" => 2},
+#  {"x" => 2, "y" => 2}
+#] <1>
+----
+<1> Observera att koordinaterna är i formen [kolumn, rad] (x, y), med 0, 0 längst ner till vänster på spelplanen.

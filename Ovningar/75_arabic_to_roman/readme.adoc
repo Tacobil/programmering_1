@@ -1,0 +1,57 @@
+== 75. Arabic to Roman
+
+`arabic_to_roman` tar ett heltal mellan 1 och 3999 som input och returnerar motsvarande romerska siffra som en sträng.
+
+[NOTE]
+====
+.Romerska siffror
+Romerska siffror använder bokstäver för att representera tal:
+
+* I = 1
+* V = 5
+* X = 10
+* L = 50
+* C = 100
+* D = 500
+* M = 1000
+
+*Subtraktionsregel:* När en mindre symbol kommer före en större symbol betyder det subtraktion:
+
+* IV = 4 (5 - 1)
+* IX = 9 (10 - 1)
+* XL = 40 (50 - 10)
+* XC = 90 (100 - 10)
+* CD = 400 (500 - 100)
+* CM = 900 (1000 - 100)
+
+*Exempel:*
+
+* 1994 = MCMXCIV
+  - M (1000) + CM (900) + XC (90) + IV (4)
+* 58 = LVIII
+  - L (50) + V (5) + I (1) + I (1) + I (1)
+====
+
+[source, ruby]
+.Exempelanrop
+----
+arabic_to_roman(9) #=> "IX"
+arabic_to_roman(58) #=> "LVIII"
+arabic_to_roman(1994) #=> "MCMXCIV"
+arabic_to_roman(3749) #=> "MMMDCCXLIX"
+arabic_to_roman(1) #=> "I"
+arabic_to_roman(3999) #=> "MMMCMXCIX"
+----
+
+[IMPORTANT]
+====
+Använd följande hash för mappningen:
+
+`{1000 => "M", 900 => "CM", 500 => "D", 400 => "CD", 100 => "C", 90 => "XC", 50 => "L", 40 => "XL", 10 => "X", 9 => "IX", 5 => "V", 4 => "IV", 1 => "I"}`
+====
+
+* Skapa ett flödesschema med penna och papper.
+* Testkör flödesschemat med olika värden för att säkerställa att det fungerar.
+* Implementera funktionen `arabic_to_roman` i `arabic_to_roman.rb`.
+* Testa din lösning manuellt genom att anropa funktionen med olika argument.
+* Kör de automatiska testerna med `rake` i uppgiftens rotmapp i terminalen.

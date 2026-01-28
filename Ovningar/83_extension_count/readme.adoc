@@ -1,0 +1,23 @@
+== 83. Extension Count
+
+`extension_count` tar en sträng som representerar en sökväg till en mapp som input och returnerar en hash där nycklarna är filändelser och värdena är antalet filer med den filändelsen.
+
+Filändelsen inkluderar punkten (t.ex. `".txt"`, `".rb"`). Filer utan filändelse ska räknas med nyckeln `""` (tom sträng).
+
+[NOTE]
+====
+Denna uppgift kombinerar kunskaper från filsystemet med hashes. Se link:../code_and_syntax/#filsystemet[filsystemet] och link:../code_and_syntax/#hashes[hashes] för vilka metoder som kan vara användbara.
+====
+
+[IMPORTANT]
+====
+För att testerna ska fungera finns det en mapp som heter `files` i uppgiftens testmapp. Denna mapp innehåller filer som testerna kommer att använda. Ta inte bort eller ändra i den.
+====
+
+[source, ruby]
+.Exempelanrop
+----
+extension_count("c:/users/daniel.berg/documents/projekt") #=> {".txt" => 3, ".rb" => 2, ".png" => 1}
+extension_count("c:/users/daniel.berg/documents/bilder") #=> {".jpg" => 5, ".png" => 2}
+extension_count("c:/users/daniel.berg/documents/tom_mapp") #=> {}
+----

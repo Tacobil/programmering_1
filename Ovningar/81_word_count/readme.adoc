@@ -1,0 +1,20 @@
+== 81. Word Count
+
+`word_count` tar en en sträng som representerar en sökväg till en textfil som input och returnerar antalet *ord* i filen. (Ett ord är en sekvens av bokstäver, tecken och/eller siffror som är avgränsade av mellanslag).
+
+[NOTE]
+====
+Se link:../code_and_syntax/#filsystemet[filsystemet] för vilka metoder som kan vara användbara.
+====
+
+[IMPORTANT]
+====
+För att testerna ska fungera finns det en mapp som heter `files` i uppgiftens testmapp. Denna mapp innehåller filer som testerna kommer att använda. Ta inte bort eller ändra i den.
+====
+
+[source, ruby]
+.Exempelanrop
+----
+word_count("c:\\users\\daniel.berg\\documents\\desktop\\readme.md") #=> 123
+word_count("c:/users/daniel.berg/documents/desktop/readme.md") #=> 123
+----

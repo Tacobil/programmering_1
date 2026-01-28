@@ -1,0 +1,48 @@
+== 85. Parse Contacts
+
+`parse_contacts` tar en sträng som representerar en sökväg till en kontaktfil som argument och returnerar en array av hashes.
+
+En kontaktfil är en textfil med filändelsen `.csv` som innehåller kontaktinformation. Varje rad innehåller tre värden separerade med kommatecken: namn, telefonnummer och e-postadress.
+
+Varje rad ska omvandlas till en hash med nycklarna `"namn"`, `"telefon"` och `"epost"`.
+
+.Exempelfil (vanner.csv)
+----
+Anna Andersson,070-1234567,anna@example.com
+Erik Eriksson,070-7654321,erik@example.com
+Maria Nilsson,070-1111111,maria@example.com
+----
+
+[source, ruby]
+.Exempelanrop
+----
+parse_contacts("contacts/vanner.csv")
+#=> [
+#     {"namn" => "Anna Andersson", "telefon" => "070-1234567", "epost" => "anna@example.com"},
+#     {"namn" => "Erik Eriksson", "telefon" => "070-7654321", "epost" => "erik@example.com"},
+#     {"namn" => "Maria Nilsson", "telefon" => "070-1111111", "epost" => "maria@example.com"}
+#   ]
+
+parse_contacts("contacts/tom.csv")
+#=> []
+----
+
+[NOTE]
+====
+Denna uppgift introducerar konceptet *kommaseparerade värden* (CSV - Comma Separated Values). CSV är ett vanligt format för att lagra strukturerad data i textfiler.
+
+Tips: `String#split(",")` delar upp en sträng vid varje kommatecken och returnerar en array.
+
+[source, ruby]
+----
+"Anna,070-123,anna@mail.com".split(",")
+#=> ["Anna", "070-123", "anna@mail.com"]
+----
+====
+
+[IMPORTANT]
+====
+Kontaktdatan finns i mappen `contacts` i uppgiftens testmapp.
+Denna mapp innehåller filer som testerna kommer att använda. Ta inte bort eller ändra i den.
+====
+

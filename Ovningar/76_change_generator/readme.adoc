@@ -1,0 +1,22 @@
+== 76. Change Generator
+
+`change_generator` tar ett belopp i SEK som input och returnerar en hash som visar hur många av varje valör (sedlar och mynt) som behövs för att göra upp beloppet med så få sedlar och mynt som möjligt.
+
+För att använda så få sedlar och mynt som möjligt börjar man med den största valören och tar så många som får plats, sedan nästa största, och så vidare.
+
+Svenska valörer: 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1 kr.
+
+[source, ruby]
+.Exempelanrop
+----
+change_generator(287) #=> {200 => 1, 50 => 1, 20 => 1, 10 => 1, 5 => 1, 2 => 1}
+change_generator(1500) #=> {1000 => 1, 500 => 1}
+change_generator(1) #=> {1 => 1}
+change_generator(999) #=> {500 => 1, 200 => 2, 50 => 1, 20 => 2, 5 => 1, 2 => 2}
+----
+
+* Skapa ett flödesschema med penna och papper.
+* Testkör flödesschemat med olika värden för att säkerställa att det fungerar.
+* Implementera funktionen `change_generator` i `change_generator.rb`.
+* Testa din lösning manuellt genom att anropa funktionen med olika argument.
+* Kör de automatiska testerna med `rake` i uppgiftens rotmapp i terminalen.

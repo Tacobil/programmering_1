@@ -1,0 +1,77 @@
+== 89. Battleship
+
+Den här uppgiften går ut på att skriva en funktion till spelet "Battleship" som avgör om en cell på en spelplan innehåller ett fartyg eller inte.
+
+`battleship` tar tre argument:
+
+1. En sträng som representerar en sökväg till en spelares spelplan.
+2. Ett heltal som representerar en rad på spelplanen.
+3. Ett heltal som representerar en kolumn på spelplanen.
+
+En spelplan är en textfil som innehåller en twådimensionell array av strängar.
+
+* Varje sträng är separerad av ett blanksteg.
+* Varje sträng representerar en cell på spelplanen.
+* En cell kan antingen vara tom (`'.'`) eller innehålla ett fartyg.
+* Fartyg representeras av tecken som beskriver vilken sort det är:
+** `C` : Hangarfartyg (5 celler).
+** `B` : Slagskepp (4 celler).
+** `D` : Jagare (3 celler).
+** `S` : Ubåt (3 celler).
+** `P` : Patrullbåt (2 celler).
+
+Fartyg kan vara placerade horisontellt eller horisontellt. De kan inte vara diagonala och inte heller överlappa varandra.
+
+[source, plaintext]
+.Exempelspelplan
+----
+C C C C C . . . . .
+. . . . . . . . . .
+. . B B B B . . . .
+. . . . . . . . . .
+. D D D . . . . . P
+. . . . . . . . . P
+. S S S . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+----
+
+Funktionen ska returnera `true` om cellen på raden och kolumnen innehåller ett fartyg, annars `false`.
+
+[NOTE]
+====
+Se link:../code_and_syntax/#tvådimensionella-arrayer[tvådimensionella arrayer] för hur tvådimensionella arrayer fungerar.
+====
+
+[IMPORTANT]
+====
+Exempelspelplaner finns i mappen `boards` i uppgiftens rotmapp.
+Denna mapp innehåller filer som testerna kommer att använda. Ta inte bort eller ändra i den.
+====
+
+[source, plaintext]
+.Exempelspelplan
+----
+C C C C C . . . . .
+. . . . . . . . . .
+. . B B B B . . . .
+. . . . . . . . . .
+. D D D . . . . . P
+. . . . . . . . . P
+. S S S . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+----
+
+[source, ruby]
+.Exempelanrop
+----
+battleship("boards/1.board", 0,0) #=> true
+battleship("boards/1.board", 0,5) #=> false
+battleship("boards/1.board", 3,3) #=> false
+battleship("boards/1.board", 4,9) #=> true
+battleship("nope/nuh-uh.board") #=> "Spelplanen finns inte."
+battleship("boards/1.board, -32, 143") #=> "Felaktiga koordinater."
+----

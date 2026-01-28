@@ -1,0 +1,35 @@
+== 77. Merge Hashes
+
+`merge_hashes` tar två hashar som input och returnerar en ny hash som kombinerar båda hasharna. Om samma nyckel finns i båda hasharna kommer värdet från den andra hashen att användas.
+
+[source, ruby]
+.Exempelanrop
+----
+hash1 = {"a" => 1, "b" => 2}
+hash2 = {"c" => 3, "d" => 4}
+merge_hashes(hash1, hash2) #=> {"a" => 1, "b" => 2, "c" => 3, "d" => 4}
+
+first = {"name" => "Alice", "age" => 25}
+second = {"city" => "Stockholm"}
+merge_hashes(first, second) #=> {"name" => "Alice", "age" => 25, "city" => "Stockholm"}
+
+original = {"a" => 1, "b" => 2}
+update = {"a" => 99}
+merge_hashes(original, update) #=> {"a" => 99, "b" => 2}
+----
+
+[WARNING]
+====
+Skriv funktionen utan att använda metoden `.merge`.
+====
+
+[IMPORTANT]
+====
+För att lösa den här uppgiften behöver du kunna link:../code_and_syntax#skapa[skapa en hash], link:../code_and_syntax#lägga-till[lägga till nyckel-värde-par], link:../code_and_syntax#åtkomst[slå upp värden], link:../goals_and_plans#inkrementerande-räknande-loop[inkrementerande räknande loop] och link:../code_and_syntax#längd[använda .keys för att hämta nycklar].
+====
+
+* Skapa ett flödesschema med penna och papper.
+* Testkör flödesschemat med olika värden för att säkerställa att det fungerar.
+* Implementera funktionen `merge_hashes` i `merge_hashes.rb`.
+* Testa din lösning manuellt genom att anropa funktionen med olika argument.
+* Kör de automatiska testerna med `rake` i uppgiftens rotmapp i terminalen.

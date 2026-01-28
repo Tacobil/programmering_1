@@ -1,0 +1,28 @@
+== 70. Update Value
+
+`update_value` tar en `Hash`, en nyckel och ett nytt värde som input. Funktionen uppdaterar värdet för den angivna nyckeln och returnerar hashen. Om nyckeln inte finns ska ett nytt nycke-värde-par skapas.
+
+[source, ruby]
+.Exempelanrop
+----
+ages = {"Alice" => 25, "Bob" => 30}
+update_value(ages, "Alice", 26)
+#=> {"Alice" => 26, "Bob" => 30}
+
+prices = {"milk" => 15, "bread" => 25}
+update_value(prices, "milk", 18)
+#=> {"milk" => 18, "bread" => 25}
+
+scores = {"player1" => 100, "player2" => 200}
+update_value(scores, "player2", 250)
+#=> {"player1" => 100, "player2" => 250}
+----
+
+[IMPORTANT]
+====
+För att lösa den här uppgiften behöver du kunna link:../code_and_syntax#uppdatera[uppdatera värden] i en hash.
+====
+
+* Implementera funktionen `update_value` i `update_value.rb`.
+* Testa din lösning manuellt genom att anropa funktionen med olika argument.
+* Kör de automatiska testerna med `rake` i uppgiftens rotmapp i terminalen.

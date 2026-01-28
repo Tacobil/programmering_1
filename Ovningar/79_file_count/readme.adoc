@@ -1,0 +1,27 @@
+== 79. File Count
+
+`file_count` tar en en sträng som representerar en sökväg till en mapp som input och returnerar antalet *filer* i mappen. `file_count` ska inte inkludera mappar i räkningen.
+
+[NOTE]
+====
+Se link:../code_and_syntax/#filsystemet[filsystemet] för vilka metoder som kan vara användbara.
+====
+
+[IMPORTANT]
+====
+För att testerna ska fungera finns det en mapp som heter `files` i uppgiftens testmapp. Denna mapp innehåller filer som testerna kommer att använda. Ta inte bort eller ändra i den.
+====
+
+[WARNING]
+====
+Om du anger sökvägar med backslash (`\`) i strängen kommer det att tolkas som en link:https://en.wikipedia.org/wiki/Escape_sequence[Escape-sekvens]. För kunna använda backslash måste du därför skriva dubbla backslash (`'\\'`) för att undvika detta.
+
+Du kan även använda forward slash (`'/'`) istället för backslash. Detta fungerar på Windows och Unix-baserade system.
+====
+
+[source, ruby]
+.Exempelanrop
+----
+file_count("c:\\users\\daniel.berg\\documents\\desktop") #=> 3
+file_count("c:/users/daniel.berg/documents/desktop") #=> 3
+----

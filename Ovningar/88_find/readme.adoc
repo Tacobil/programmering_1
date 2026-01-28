@@ -1,0 +1,42 @@
+== 88. Find Word
+
+Den här uppgiften går ut på att skriva *två* funktioner för att leta reda på den *första* förekomsten av ett ord i en bok.
+
+1. `parse` ska ta en sträng som argument och returnera en tvådimensionell array som representerar bokens innehåll,
+    där varje rad är en array av ord.
+
+2. `find` ska ta två argument: en tvådimensionell array som representerar bokens innehåll och ett ord som ska sökas efter.
+    Funktionen ska returnera en array med två element: raden och positionen ordet förekommer på i raden.
+
+[IMPORTANT]
+====
+Se link:../code_and_syntax/#tvådimensionella-arrayer[tvådimensionella arrayer] för hur tvådimensionella arrayer fungerar.
+
+För att dela upp varje rad i dess ord kan du använda metoden `split` på varje rad och splitta på blanksteg (mellanslag) (" ").
+
+[source, ruby, linenums]
+.Exempel
+----
+#givet att variabeln `line` innehåller en rad från en bok
+words = line.split(" ") <1>
+----
+<1>  words kommer nu att innehålla en array med alla ord i raden
+====
+
+[IMPORTANT]
+====
+Skapa både `parse` och `find` i filen `lib/find.rb`.
+
+Exempelfiler finns i mappen `books` i uppgiftens rotmapp.
+Denna mapp innehåller filer som testerna kommer att använda. Ta inte bort eller ändra i den.
+====
+
+[source, ruby]
+.Exempelanrop
+----
+book = parse("books/heart_of_darkness.txt") #=> [[...], [...], ...] (en jättejättelång tvådimensionellarray)
+find(book, "horror!" ) #=> [2992, 1]
+book = parse("books/pride_and_prejudice.txt")#=> [[...], [...], ...] (en jättejättelång tvådimensionellarray)
+find(book, "banana" ) #=> []
+parse("nope/nuh-uh.txt") #=> "Boken finns inte."
+----

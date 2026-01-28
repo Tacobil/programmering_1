@@ -1,0 +1,53 @@
+== 86. Sales Report
+
+Den här uppgiften går ut på att skriva *två* funktioner för att läsa och bearbeta försäljningsdata från en CSV-fil.
+
+1. `parse` ska ta en sträng som representerar en sökväg till en försäljningsfil som argument och returnera en array av hashes.
+   Varje rad i filen innehåller tre värden separerade med kommatecken: produktnamn, antal och pris per styck.
+   Varje rad ska omvandlas till en hash med nycklarna `"produkt"`, `"antal"` och `"pris"`.
+
+2. `sales_report` ska ta en array av hashes (från `parse`) som argument och returnera en hash där nycklarna är produktnamn och värdena är försäljningen (antal * pris) för produkten.
+
+.Exempelfil (januari.csv)
+----
+Äpple,10,5.0
+Banan,5,3.0
+Apelsin,12,4.5
+----
+
+[NOTE]
+====
+Denna uppgift kombinerar kunskaper från filsystemet med hashes och stränghantering. Se link:../code_and_syntax/#filsystemet[filsystemet] och link:../code_and_syntax/#hashes[hashes] för vilka metoder som kan vara användbara.
+
+Tips: `String#split(",")` delar upp en sträng vid varje kommatecken.
+====
+
+[IMPORTANT]
+====
+Skapa både `parse` och `sales_report` i filen `sales_report.rb`.
+
+Försäljningsdatan finns i mappen `sales_data` i uppgiftens testmapp.
+Denna mapp innehåller filer som testerna kommer att använda. Ta inte bort eller ändra i den.
+====
+
+[source, ruby]
+.Exempelanrop
+----
+data = parse("sales_data/januari.csv")
+#=> [
+#     {"produkt" => "Äpple", "antal" => 10, "pris" => 5.0},
+#     {"produkt" => "Banan", "antal" => 5, "pris" => 3.0},
+#     {"produkt" => "Apelsin", "antal" => 12, "pris" => 4.5}
+#   ]
+
+sales_report(data)
+#=> {
+#     "Äpple" => 50.0, <1>
+#     "Banan" => 15.0, <2>
+#     "Apelsin" => 54.0 <3>
+#    }
+----
+
+<1> 10 * 5.0 = 50.0
+<2> 5 * 3.0 = 15.0
+<3> 12 * 4.5 = 54.0

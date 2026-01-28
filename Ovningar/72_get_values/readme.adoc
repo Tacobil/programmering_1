@@ -1,0 +1,28 @@
+== 72. Get Values
+
+`get_values` tar en `Hash` som input och returnerar en array med alla värden i hashen.
+
+[source, ruby]
+.Exempelanrop
+----
+ages = {"Alice" => 25, "Bob" => 30}
+get_values(ages) #=> [25, 30]
+
+empty_hash = {}
+get_values(empty_hash) #=> []
+
+prices = {"milk" => 15, "bread" => 25, "eggs" => 30}
+get_values(prices) #=> [15, 25, 30]
+
+scores = {"player1" => 100}
+get_values(scores) #=> [100]
+----
+
+[IMPORTANT]
+====
+För att lösa den här uppgiften behöver du kunna använda metoden `.values` för att hämta alla värden från en hash.
+====
+
+* Implementera funktionen `get_values` i `get_values.rb`.
+* Testa din lösning manuellt genom att anropa funktionen med olika argument.
+* Kör de automatiska testerna med `rake` i uppgiftens rotmapp i terminalen.

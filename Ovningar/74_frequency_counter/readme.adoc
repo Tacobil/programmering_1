@@ -1,0 +1,25 @@
+== 74. Frequency Counter
+
+`frequency_counter` tar en array som input och returnerar en hash som räknar antalet förekomster av varje element i arrayen.
+
+[source, ruby]
+.Exempelanrop
+----
+letters = ["a", "b", "a", "c", "a"]
+frequency_counter(letters) #=> {"a" => 3, "b" => 1, "c" => 1}
+
+words = ["hello", "world", "hello"]
+frequency_counter(words) #=> {"hello" => 2, "world" => 1}
+
+empty_array = []
+frequency_counter(empty_array) #=> {}
+
+numbers = [1, 2, 3, 2, 1, 2]
+frequency_counter(numbers) #=> {1 => 2, 2 => 3, 3 => 1}
+----
+
+* Skapa ett flödesschema med penna och papper.
+* Testkör flödesschemat med olika värden för att säkerställa att det fungerar.
+* Implementera funktionen `frequency_counter` i `frequency_counter.rb`.
+* Testa din lösning manuellt genom att anropa funktionen med olika argument.
+* Kör de automatiska testerna med `rake` i uppgiftens rotmapp i terminalen.

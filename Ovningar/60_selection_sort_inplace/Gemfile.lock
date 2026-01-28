@@ -1,0 +1,33 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ansi (1.5.0)
+    bigdecimal (3.1.8)
+    builder (3.3.0)
+    humanize (3.1.0)
+    minitest (5.26.0)
+    minitest-fail-fast (0.1.0)
+      minitest (~> 5)
+    minitest-reporters (1.7.1)
+      ansi
+      builder
+      minitest (>= 5.0)
+      ruby-progressbar
+    mocha (2.7.1)
+      ruby2_keywords (>= 0.0.5)
+    ruby-progressbar (1.13.0)
+    ruby2_keywords (0.0.5)
+
+PLATFORMS
+  x64-mingw-ucrt
+
+DEPENDENCIES
+  bigdecimal
+  humanize
+  minitest
+  minitest-fail-fast
+  minitest-reporters
+  mocha
+
+BUNDLED WITH
+   2.6.9

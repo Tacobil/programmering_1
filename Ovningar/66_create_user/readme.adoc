@@ -1,0 +1,25 @@
+== 66. Create User
+
+`create_user` tar tre argument (namn, ålder och stad) och returnerar en `Hash` som lagrar dessa värden med nycklarna `"name"`, `"age"` och `"city"`.
+
+[source, ruby]
+.Exempelanrop
+----
+create_user("Alice", 25, "Stockholm")
+#=> {"name" => "Alice", "age" => 25, "city" => "Stockholm"}
+
+create_user("Bob", 30, "Göteborg")
+#=> {"name" => "Bob", "age" => 30, "city" => "Göteborg"}
+
+create_user("Charlie", 17, "Malmö")
+#=> {"name" => "Charlie", "age" => 17, "city" => "Malmö"}
+----
+
+[IMPORTANT]
+====
+För att lösa den här uppgiften behöver du kunna link:../code_and_syntax#skapa[skapa en hash] med nyckel-värde-par.
+====
+
+* Implementera funktionen `create_user` i `create_user.rb`.
+* Testa din lösning manuellt genom att anropa funktionen med olika argument.
+* Kör de automatiska testerna med `rake` i uppgiftens rotmapp i terminalen.

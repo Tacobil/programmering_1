@@ -1,0 +1,21 @@
+== 87. File Count - Recursive
+
+`file_count_recursive` tar en en sträng som representerar en sökväg till en mapp som input och returnerar antalet *filer* i mappen.
+`file_count_recursive`ska vara *rekursiv*, dvs. den ska även räkna filer i undermappar, och i undermappernas undermappar, och så vidare.
+
+[NOTE]
+====
+Se link:../code_and_syntax/#filesystemet[filsystemet] för vilka metoder som kan vara användbara.
+====
+
+[IMPORTANT]
+====
+För att testerna ska fungera finns det en mapp som heter `files` i uppgiftens testmapp. Denna mapp innehåller filer som testerna kommer att använda. Ta inte bort eller ändra i den.
+====
+
+[source, ruby]
+.Exempelanrop
+----
+file_count_recursive("c:\\users\\daniel.berg\\documents\\desktop") #=> 54
+file_count_recursive("c:/users/daniel.berg/documents/desktop") #=> 54
+----
