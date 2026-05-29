@@ -1,25 +1,31 @@
 def average_temperature(readings_path)
-    results = []
-
-    Dir.chdir(readings_path)
-    temp_folders = Dir.glob("*.temps")
-
-    i = 0
-    while i < temp_folders.length
-        temps = File.readlines(temp_folders[i])
-        j = 0
-        while j < temps.length
-            results << temps[j].to_f
-
-            j += 1
-        end
-
-        result /= temps.length
-
-        i += 1
+    if File.exist?(readings_path) == false
+        return "Mappen finns inte."
     end
 
-    return result
+    temperatures = []
+
+    Dir.chdir(readings_path)
+    temp_file = Dir.glob("*.temps")
+
+    temp_file.each do |file|
+        temps = File.readlines(file)
+
+        temps.each do |temp|
+            temperatures << temp.to_f
+        end
+    end
+
+    if temperatures.length == 0
+        return "Inga mätfiler hittades."
+    end
+
+    return average(temperatures)
 end
 
-p average_temperature("readings/april")
+def average(array)
+    return array.sum / array.length
+end
+
+# p average_temperature("nope/nuh-uh") #=> "Mappen finns inte."
+p average_temperature("readings/may") #=> "Inga mätfiler hittades."

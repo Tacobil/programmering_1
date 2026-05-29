@@ -1,0 +1,9 @@
+Skruv,150,1.5
+Mutter,200,2.0
+Spik,500,0.75
+Lim,40,45.0
+Hammare,10,89.9
+hammarhuvud,5,15
+mannen,-10,5
+aaa,3,5.0
+korvstroganoff,20,30.0

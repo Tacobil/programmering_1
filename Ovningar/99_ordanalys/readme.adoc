@@ -1,0 +1,74 @@
+:imagesdir: ../../assignments/media
+
+
+== 99. Ordanalys
+
+Den här uppgiften går ut på att skriva ett program som läser in en textfil och presenterar olika statistik om texten via en meny.
+
+I mappen `texts` finns två böcker som kan användas:
+
+* `alice.txt` - Alice's Adventures in Wonderland (~26 000 ord)
+* `sherlock.txt` - The Adventures of Sherlock Holmes (~105 000 ord)
+
+=== Funktionalitet
+
+Programmet ska börja med att fråga användaren vilken fil som ska analyseras. Filnamnet ska inkludera sökvägen till filen (t.ex. `texts/alice.txt`).
+
+Programmet ska sedan läsa in filen, rensa bort skiljetecken och göra om alla ord till gemener (lowercase). Sedan ska en meny visas som låter användaren välja vilken statistik som ska visas.
+
+==== Rensning av text
+
+Innan orden kan analyseras behöver texten rensas. Följande steg ska utföras:
+
+1. Gör om all text till gemener (lowercase) med `.downcase`.
+2. Dela upp texten i ord med `.split`.
+3. Rensa varje ord från alla tecken som *inte* är bokstäver (a-z). Det innebär att skiljetecken som `.`, `,`, `!`, `?`, `"`, `'`, `:`, `;`, `-`, `(`, `)` etc. ska tas bort.
+4. Ta bort tomma strängar som kan uppstå efter rensningen (t.ex. om ett "ord" bara bestod av skiljetecken).
+
+[NOTE]
+====
+Tips: Skapa en hjälpfunktion `clean_word` som tar ett ord (sträng) och returnerar ordet utan skiljetecken.
+
+Funktionen kan loopa igenom varje tecken i ordet och bygga upp en ny sträng med enbart bokstäver (a-z).
+
+[source, ruby]
+----
+clean_word("Hello!")
+#=> "hello"
+
+clean_word("don't")
+#=> "dont"
+
+clean_word("--")
+#=> ""
+----
+====
+
+==== Menyalternativ
+
+* `"count"`: Visa totalt antal ord i texten.
+* `"unique"`: Visa antal unika ord.
+* `"frequent"`: Visa det vanligaste ordet och hur många gånger det förekommer.
+* `"average"`: Visa genomsnittlig ordlängd (avrundat till 2 decimaler).
+* `"longest"`: Visa det längsta ordet.
+* `"quit"`: Avsluta programmet.
+
+=== Exempel
+
+video::99_ordanalys.mp4[width=640, opts="autoplay,loop,muted"]
+
+[WARNING]
+====
+Uppgiften saknar automatiska tester. Se filmer i uppgiftens mapp för hur programmet ska fungera, och testa manuellt.
+====
+
+[IMPORTANT]
+====
+Se link:../goals_and_plans/#input-loop[Input-loop] för hur du skapar en input-loop.
+
+Se link:../goals_and_plans/#menysystem[Menysystem] för hur du kan hantera giltig/ogiltig input.
+
+Se link:../goals_and_plans/#separation-av-ansvar[Separation av ansvar] för hur du delar upp programmet i input-, logik- och outputfunktioner.
+
+Dela upp programmet i flera hjälpfunktioner för att göra koden mer lättläst och lättare att felsöka.
+====

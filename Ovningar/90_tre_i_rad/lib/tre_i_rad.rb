@@ -38,3 +38,7 @@ def valid_moves(board)
 
   return result
 end
+
+
+board = parse("boards/1.board") #=> [["x", "o", "x"], ["o", "x", "o"], ["o", "x", "x"]]
+p valid_moves(board)

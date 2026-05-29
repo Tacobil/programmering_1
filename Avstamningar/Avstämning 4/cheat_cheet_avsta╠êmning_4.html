@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programmering 1 - Ruby Cheat Sheet</title>
+  <style>
+/* Reset and base */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 1rem;
+  background: #fdf6e3;
+  color: #1a1a1a;
+}
+
+/* Header */
+header {
+  margin-bottom: 1.5rem;
+}
+
+header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+/* Multi-column container */
+.container {
+  column-count: 3;
+  column-gap: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+  .container { column-count: 2; }
+}
+
+@media (max-width: 768px) {
+  .container { column-count: 1; }
+}
+
+/* Section wrapper - prevents breaking across columns */
+.section {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  display: flow-root; /* contain floats */
+  background: #e8f8f5;
+}
+
+/* Section header */
+.section h2 {
+  background: #4ecdc4;
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0.4rem 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Expand button */
+.expand-btn {
+  background: none;
+  border: none;
+  color: #0a5a53;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0 0.2rem;
+  opacity: 0.6;
+  transition: opacity 0.15s;
+}
+
+.expand-btn:hover {
+  opacity: 1;
+}
+
+/* Section content */
+.section p,
+.section ul,
+.section ol,
+.section pre,
+.section table {
+  background: #e8f8f5;
+  margin: 0;
+  padding: 0.6rem;
+}
+
+.section p + p,
+.section p + ul,
+.section p + ol,
+.section p + pre,
+.section ul + p,
+.section ul + pre,
+.section ol + p,
+.section ol + pre,
+.section pre + p,
+.section pre + pre {
+  border-top: 1px solid #c5ebe5;
+}
+
+/* Code styling - inline code */
+code {
+  font-family: "SF Mono", "Fira Code", "JetBrains Mono", Consolas, monospace;
+  font-size: 0.85em;
+  background: #c5ebe5;
+  padding: 0.15em 0.35em;
+  border-radius: 3px;
+  border: 1px solid #9dd9d2;
+}
+
+/* Code blocks */
+.section pre {
+  background: #1e1e1e;
+  padding: 0.6rem 0.8rem;
+  overflow-x: auto;
+  border-radius: 4px;
+}
+
+/* Consecutive code blocks: side-by-side (only divs, not inline code) */
+div.highlighter-rouge:has(+ div.highlighter-rouge) {
+  float: left;
+  margin: 0.5rem 0.5rem 0.5rem 0.6rem;
+}
+
+div.highlighter-rouge + div.highlighter-rouge {
+  float: left;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+}
+
+div.highlighter-rouge + div.highlighter-rouge:not(:has(+ div.highlighter-rouge)) {
+  margin-right: 0.6rem;
+}
+
+.section p,
+.section ul,
+.section ol,
+.section table {
+  clear: both;
+}
+
+pre code {
+  display: block;
+  background: transparent;
+  padding: 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #d4d4d4;
+  border: none;
+}
+
+/* Rouge syntax highlighting - dark theme */
+.highlight .c, .highlight .c1, .highlight .cm { color: #6a9955; } /* comments */
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp { color: #c586c0; } /* keywords */
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sr { color: #ce9178; } /* strings */
+.highlight .mi, .highlight .mf, .highlight .mh { color: #b5cea8; } /* numbers */
+.highlight .nb, .highlight .nf { color: #dcdcaa; } /* built-ins, functions */
+.highlight .nc { color: #4ec9b0; } /* class names */
+.highlight .no { color: #4fc1ff; } /* constants */
+.highlight .o, .highlight .ow { color: #d4d4d4; } /* operators */
+.highlight .p { color: #d4d4d4; } /* punctuation */
+.highlight .vi, .highlight .vg, .highlight .vc { color: #9cdcfe; } /* variables */
+.highlight .ss { color: #4fc1ff; } /* symbols */
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.3rem 0.5rem;
+  border-bottom: 1px solid #c5ebe5;
+}
+
+th {
+  background: #c5ebe5;
+  font-weight: 600;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Lists */
+ul, ol {
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.25rem;
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* Definition-style content */
+strong {
+  color: #0a5a53;
+}
+
+/* Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.modal-overlay.active {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.modal-content {
+  background: #e8f8f5;
+  max-width: 700px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: flow-root; /* contain floats */
+}
+
+.modal-content h2 {
+  background: #4ecdc4;
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+}
+
+.modal-content p,
+.modal-content ul,
+.modal-content ol,
+.modal-content table {
+  background: #e8f8f5;
+  margin: 0;
+  padding: 0.8rem;
+  clear: both;
+}
+
+.modal-content pre {
+  background: #1e1e1e;
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  margin: 0;
+}
+
+.modal-content div.highlighter-rouge {
+  margin: 0.5rem;
+}
+
+.modal-content pre code {
+  font-size: 0.85rem;
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Programmering 1 - Ruby Cheat Sheet</h1>
+  </header>
+  <main class="container">
+    <div class="section"><h2 id="utskrift-på-skärmen-console-output">Utskrift på skärmen (console output)<button class="expand-btn" title="Expand">&#x26F6;</button></h2>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">puts</span> <span class="s2">"Hello"</span>   <span class="c1"># utskrift med radbrytning</span>
+<span class="nb">print</span> <span class="s2">"Hello"</span>  <span class="c1"># utskrift utan radbrytning</span>
+</code></pre></div></div>
+
+<p>Funktionen <code class="language-ruby highlighter-rouge"><span class="nb">p</span></code> skriver ut på ett format som visar utskriftens datatyp (bra vid debugging!):</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">p</span> <span class="s2">"Hello"</span>
+</code></pre></div></div>
+
+<p>Vid utskrift kan variabler integreras i en given sträng genom <strong>sträng-interpolering</strong>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">age</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="nb">puts</span> <span class="s2">"You are </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old"</span>
+</code></pre></div></div>
+
+</div><div class="section"><h2 id="kommentarer-i-källkod">Kommentarer i källkod<button class="expand-btn" title="Expand">&#x26F6;</button></h2>
+
+<p>Inleds med <code class="language-ruby highlighter-rouge"><span class="c1">#</span></code> och kan skrivas efter en kodrad.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sum</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>   <span class="c1"># summera talen a och b</span>
+</code></pre></div></div>
+
+<p><strong>OBS!</strong> Om raden inleds med <code class="language-ruby highlighter-rouge"><span class="c1">#</span></code> är hela raden kommentar.</p>
+
+</div><div class="section"><h2 id="operatorer-för-jämförelse">Operatorer för jämförelse<button class="expand-btn" title="Expand">&#x26F6;</button></h2>
+
+<p>Jämförelse måste ske mellan värden av samma datatyp. En jämförelse utvärderar alltid till <code class="language-ruby highlighter-rouge"><span class="kp">true</span></code> eller <code class="language-ruby highlighter-rouge"><span class="kp">false</span></code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Beskrivning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-ruby highlighter-rouge"><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span></code></td>
+      <td>x mindre än y</td>
+    </tr>
+    <tr>
+      <td><code class="language-ruby highlighter-rouge"><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span></code></td>
+      <td>x större än y</td>
+    </tr>
+    <tr>
+      <td><code class="language-ruby highlighter-rouge"><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">y</span></code></td>
+      <td>x mindre än eller lika med y</td>
+    </tr>
+    <tr>
+      <td><code class="language-ruby highlighter-rouge"><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">y</span></code></td>
+      <td>x större än eller lika med y</td>
+    </tr>
+    <tr>
+      <td><code class="language-ruby highlighter-rouge"><span class="n">x</span> <span class="o">==</span> <span class="n">y</span></code></td>
+      <td>x lika med y</td>
+    </tr>
+    <tr>
+      <td><code class="language-ruby highlighter-rouge"><span class="n">x</span> <span class="o">!=</span> <span class="n">y</span></code></td>
+      <td>x inte lika med y</td>
+    </tr>
+  </tbody>
+</table>
+
+</div><div class="section"><h2 id="if-satser-if-statements">If-satser (if-statements)<button class="expand-btn" title="Expand">&#x26F6;</button></h2>
+
+<p>If-satser har ett eller flera kod-block som utförs om ett villkor är sant. Endast ett block utförs (även om flera villkor är sanna).</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># if-elsif-else</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span>
+  <span class="n">z</span> <span class="o">=</span> <span class="s2">"smaller"</span>
+<span class="k">elsif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span>
+  <span class="n">z</span> <span class="o">=</span> <span class="s2">"larger"</span>
+<span class="k">else</span>
+  <span class="n">z</span> <span class="o">=</span> <span class="s2">"equal"</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+</div><div class="section"><h2 id="iteration-med-while-loop">Iteration med while-loop<button class="expand-btn" title="Expand">&#x26F6;</button></h2>
+
+<p>En <strong>while-loop</strong> består av ett villkor och ett kodblock som upprepas (itereras) så länge villkoret är sant.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Inkrementerande loop</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span>
+  <span class="o">...</span>
+  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+</div><div class="section"><h2 id="indexering">Indexering<button class="expand-btn" title="Expand">&#x26F6;</button></h2>
+
+<p>Enskilda tecken eller värden som ingår i en sträng eller lista/array kallas <strong>element</strong>. Varje element har ett unikt <strong>index</strong> (numrerad position). Index är nollbaserat. Index fungerar likadant för strängar och arrayer.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>B</th>
+      <th>e</th>
+      <th>r</th>
+      <th>t</th>
+      <th>i</th>
+      <th>l</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>index</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">name</span> <span class="o">=</span> <span class="s2">"Bertil"</span>
+<span class="nb">puts</span> <span class="nb">name</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>    <span class="c1"># "i" skrivs ut</span>
+
+<span class="c1"># Speciella index-format:</span>
+<span class="nb">name</span><span class="p">[</span><span class="nb">name</span><span class="p">.</span><span class="nf">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>        <span class="c1"># ger sista elementet =&gt; "l"</span>
+<span class="nb">name</span><span class="p">[</span><span class="nb">name</span><span class="p">.</span><span class="nf">length</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span>        <span class="c1"># ger näst sista     =&gt; "i"</span>
+</code></pre></div></div>
+
+</div><div class="section"><h2 id="array-lista-fält">Array (lista, fält)<button class="expand-btn" title="Expand">&#x26F6;</button></h2>
+
+<p>En lista är en <strong>datastruktur</strong> som innehåller element av en viss datatyp. Listor har många gemensamma egenskaper med strängar, t ex indexering.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span>                        <span class="c1"># initiera tom lista</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"one"</span><span class="p">,</span> <span class="s2">"two"</span><span class="p">,</span> <span class="s2">"three"</span><span class="p">]</span>   <span class="c1"># skapa lista av strängar</span>
+<span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>                          <span class="c1"># indexering =&gt; "two"</span>
+
+<span class="n">numbers</span> <span class="o">&lt;&lt;</span> <span class="s2">"four"</span>                   <span class="c1"># lägg till i slutet</span>
+<span class="n">numbers</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="s2">"five"</span><span class="p">)</span>              <span class="c1"># samma sak</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Katniss"</span><span class="p">,</span> <span class="s2">"Peter"</span><span class="p">,</span> <span class="s2">"Primrose"</span><span class="p">]</span>
+<span class="n">names</span><span class="p">.</span><span class="nf">delete_at</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                  <span class="c1"># =&gt; ["Katniss", "Primrose"]</span>
+<span class="n">names</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"hej"</span><span class="p">)</span>              <span class="c1"># =&gt; ["Katniss", "hej", "Primrose"]</span>
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="p">]</span>                       <span class="c1"># =&gt; [2, 5, 0]</span>
+</code></pre></div></div>
+
+</div><div class="section"><h2 id="hash-dictionary">Hash (dictionary)<button class="expand-btn" title="Expand">&#x26F6;</button></h2>
+
+<p>En hash är en <strong>datastruktur</strong> som lagrar nyckel-värde-par.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Skapa hash</span>
+<span class="n">person</span> <span class="o">=</span> <span class="p">{}</span>                         <span class="c1"># tom hash</span>
+<span class="n">person</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"Ada"</span><span class="p">,</span> <span class="s2">"age"</span> <span class="o">=&gt;</span> <span class="mi">36</span> <span class="p">}</span>
+
+<span class="c1"># Läsa värde</span>
+<span class="n">person</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span>                      <span class="c1"># =&gt; "Ada"</span>
+
+<span class="c1"># Uppdatera/lägga till</span>
+<span class="n">person</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">37</span>                  <span class="c1"># uppdatera</span>
+<span class="n">person</span><span class="p">[</span><span class="s2">"city"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"London"</span>           <span class="c1"># lägg till ny nyckel</span>
+
+<span class="c1"># Hämta alla nycklar/värden</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">keys</span>                         <span class="c1"># =&gt; ["name", "age", "city"]</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">values</span>                       <span class="c1"># =&gt; ["Ada", 37, "London"]</span>
+
+<span class="c1"># Kontrollera om nyckel finns</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">has_key?</span><span class="p">(</span><span class="s2">"name"</span><span class="p">)</span>             <span class="c1"># =&gt; true</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">has_key?</span><span class="p">(</span><span class="s2">"country"</span><span class="p">)</span>          <span class="c1"># =&gt; false</span>
+</code></pre></div></div>
+</div>
+  </main>
+
+  <div class="modal-overlay" id="modal">
+    <div class="modal-content" id="modal-content"></div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modal-content');
+
+    document.querySelectorAll('.section h2 .expand-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const section = btn.closest('.section');
+        modalContent.innerHTML = section.innerHTML;
+        // Remove the expand button from modal copy
+        modalContent.querySelector('.expand-btn')?.remove();
+        modal.classList.add('active');
+      });
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        modal.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+:imagesdir: ../../assignments/media
+
+== 98. Inventarie
+
+Den här uppgiften går ut på att skriva ett program som hanterar ett lager/inventarie för en butik.
+
+Programmet ska läsa in data från en fil vid start, och spara tillbaka till filen efter varje ändring.
+
+=== Dataformat
+
+Lagerdatan finns i filen `inventory.csv`. Varje rad innehåller tre värden separerade med kommatecken (`,`): `namn`, `antal` och `styckepris`.
+
+[NOTE]
+====
+.CSV: Comma Separated Values
+
+CSV (Comma Separated Values) är ett filformat som ofta används för att lagra information som kod behöver kunna läsa eller skriva.
+====
+
+.Exempelfil (inventory.csv)
+----
+Skruv,150,1.50
+Mutter,200,2.00
+Bricka,300,0.50
+----
+
+Varje vara representeras i programmet som en hash:
+
+[source, ruby]
+----
+{"namn" => "Skruv", "antal" => 150, "pris" => 1.50}
+----
+
+=== Funktionalitet
+
+Programmet ska ha en input-loop som låter användaren mata in kommandon för att hantera lagret. Följande kommandon ska finnas:
+
+* `"add"`: Lägg till en ny vara. Fråga efter namn, antal och pris.
+* `"list"`: Lista alla varor med namn, antal och pris. Visa även det totala lagervärdet (summan av antal * pris för alla varor).
+* `"search"`: Sök efter en vara med namn. Visa varans information om den hittas, annars skriv ut att varan inte finns.
+* `"delete"`: Ta bort en vara. Visa en numrerad lista och fråga vilken vara som ska tas bort.
+* `"quit"`: Avsluta programmet.
+
+video::98_inventarie.mp4[width=640, opts="autoplay,loop,muted"]
+
+
+=== Filhantering
+
+* Vid programstart ska lagerdatan läsas in från `inventory.csv`.
+* Efter varje ändring (add/delete) ska den uppdaterade lagerdatan sparas tillbaka till `inventory.csv`.
+
+=== Validering
+
+* Menyval ska valideras (enbart giltiga kommandon ska accepteras).
+* Antal måste vara ett positivt heltal.
+* Pris måste vara ett positivt tal.
+* Vid delete ska valet valideras mot antalet varor i listan.
+
+[WARNING]
+====
+Uppgiften saknar automatiska tester. Se filmer i uppgiftens mapp för hur programmet ska fungera, och testa manuellt.
+====
+
+[IMPORTANT]
+====
+Se link:../goals_and_plans/#input-loop[Input-loop] för hur du skapar en input-loop.
+
+Se link:../goals_and_plans/#menysystem[Menysystem] för hur du kan hantera giltig/ogiltig input.
+
+Se link:../goals_and_plans/#separation-av-ansvar[Separation av ansvar] för hur du delar upp programmet i input-, logik- och outputfunktioner.
+
+Dela upp programmet i flera hjälpfunktioner för att göra koden mer lättläst och lättare att felsöka.
+====
